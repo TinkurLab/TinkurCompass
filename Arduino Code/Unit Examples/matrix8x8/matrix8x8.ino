@@ -36,80 +36,60 @@ void loop() {
 
   matrix.setBrightness(16);
   
-  // N
-  matrix.clear();      // clear display  
-  matrix.drawPixel(3, 0, LED_ON); 
-  matrix.drawPixel(2, 1, LED_ON); 
-  matrix.drawPixel(2, 2, LED_ON); 
-  matrix.drawPixel(1, 2, LED_ON); 
-  matrix.drawPixel(4, 1, LED_ON); 
-  matrix.drawPixel(4, 2, LED_ON);
-  matrix.drawPixel(5, 2, LED_ON); 
-  matrix.drawPixel(3, 1, LED_ON); 
-  matrix.drawPixel(3, 2, LED_ON); 
-  matrix.drawPixel(3, 3, LED_ON); 
-  matrix.drawPixel(3, 4, LED_ON); 
-  matrix.drawPixel(3, 5, LED_ON);
-  matrix.drawPixel(3, 6, LED_ON);
-  matrix.writeDisplay();  // write the changes we just made to the display
-  delay(500);
-  
-  // NE
+  // N arrow
   matrix.clear();      // clear display 
-  matrix.drawPixel(5, 0, LED_ON);  
-  matrix.drawPixel(6, 0, LED_ON); 
-  matrix.drawPixel(7, 0, LED_ON); 
-  matrix.drawPixel(5, 2, LED_ON);
-  matrix.drawPixel(4, 3, LED_ON);
-  matrix.drawPixel(6, 1, LED_ON); 
-  matrix.drawPixel(7, 1, LED_ON);
-  matrix.drawPixel(7, 2, LED_ON);
+  matrix.drawLine(3, 0, 3, 6, LED_ON);
+  matrix.fillTriangle(1, 2, 3, 0, 5, 2, LED_ON);
   matrix.writeDisplay();  // write the changes we just made to the display
-  delay(500);
+  delay(1000);
   
-  // E
+  // NE arrow
   matrix.clear();      // clear display 
-  matrix.drawPixel(7, 3, LED_ON);  
-  matrix.drawPixel(7, 4, LED_ON); 
+  matrix.drawLine(2, 5, 7, 0, LED_ON);
+  matrix.fillTriangle(4, 0, 7, 0, 7, 3, LED_ON);
   matrix.writeDisplay();  // write the changes we just made to the display
-  delay(500);
+  delay(1000);
   
-  // SE
+  // E arrow
   matrix.clear();      // clear display 
-  matrix.drawPixel(6, 7, LED_ON);  
-  matrix.drawPixel(7, 6, LED_ON); 
-  matrix.drawPixel(7, 7, LED_ON);  
+  matrix.drawLine(1, 3, 7, 3, LED_ON);
+  matrix.fillTriangle(5, 1, 5, 5, 7, 3, LED_ON);
   matrix.writeDisplay();  // write the changes we just made to the display
-  delay(500);
+  delay(1000);
   
-  // S
+  // SE arrow
   matrix.clear();      // clear display 
-  matrix.drawPixel(3, 7, LED_ON);  
-  matrix.drawPixel(4, 7, LED_ON); 
+  matrix.drawLine(2, 2, 7, 7, LED_ON);
+  matrix.fillTriangle(7, 4, 7, 7, 4, 7, LED_ON);
   matrix.writeDisplay();  // write the changes we just made to the display
-  delay(500);
+  delay(1000);
   
-  // SW
+  // S arrow
   matrix.clear();      // clear display 
-  matrix.drawPixel(0, 6, LED_ON);  
-  matrix.drawPixel(0, 7, LED_ON); 
-  matrix.drawPixel(1, 7, LED_ON);  
+  matrix.drawLine(4, 1, 4, 7, LED_ON);
+  matrix.fillTriangle(2, 5, 4, 7, 6, 5, LED_ON);
   matrix.writeDisplay();  // write the changes we just made to the display
-  delay(500);
+  delay(1000);
   
-  // W
+  // SW arrow
   matrix.clear();      // clear display 
-  matrix.drawPixel(0, 3, LED_ON);  
-  matrix.drawPixel(0, 4, LED_ON); 
+  matrix.drawLine(5, 2, 0, 7, LED_ON);
+  matrix.fillTriangle(0, 7, 0, 4, 3, 7, LED_ON);
   matrix.writeDisplay();  // write the changes we just made to the display
-  delay(500);
+  delay(1000);
   
-  // NW
+  // W arrow
   matrix.clear();      // clear display 
-  matrix.drawPixel(0, 0, LED_ON);  
-  matrix.drawPixel(0, 1, LED_ON); 
-  matrix.drawPixel(1, 0, LED_ON);  
+  matrix.drawLine(0, 4, 6, 4, LED_ON);
+  matrix.fillTriangle(0, 4, 2, 2, 2, 6, LED_ON);
   matrix.writeDisplay();  // write the changes we just made to the display
-  delay(500);
+  delay(1000);
+  
+  // NW arrow
+  matrix.clear();      // clear display 
+  matrix.drawLine(0, 0, 5, 5, LED_ON);
+  matrix.fillTriangle(0, 0, 0, 3, 3, 0, LED_ON);
+  matrix.writeDisplay();  // write the changes we just made to the display
+  delay(1000);
 
 }
