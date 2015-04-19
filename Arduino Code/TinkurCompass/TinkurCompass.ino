@@ -144,142 +144,81 @@ void loop() {
   Serial.print("Heading (degrees): "); 
   Serial.println(headingDegrees);
   
-  Serial.print("Heading direction: "); 
-  Serial.println(getHeadingDirection(headingDegrees));
+  displayHeadingArrow(headingDegrees);
   
-  Serial.print("Heading direction friendly: "); 
-  Serial.println(getHeadingDirectionFriendly(getHeadingDirection(headingDegrees)));
+  delay(500);
+}
+
+void displayHeadingArrow(float degreesFromNorth) {
+  
+  matrix.setRotation(2);
   
   matrix.setBrightness(16);
   
-  // N
-  matrix.clear();      // clear display  
-  matrix.drawPixel(3, 0, LED_ON); 
-  matrix.drawPixel(2, 1, LED_ON); 
-  matrix.drawPixel(2, 2, LED_ON); 
-  matrix.drawPixel(1, 2, LED_ON); 
-  matrix.drawPixel(4, 1, LED_ON); 
-  matrix.drawPixel(4, 2, LED_ON);
-  matrix.drawPixel(5, 2, LED_ON); 
-  matrix.drawPixel(3, 1, LED_ON); 
-  matrix.drawPixel(3, 2, LED_ON); 
-  matrix.drawPixel(3, 3, LED_ON); 
-  matrix.drawPixel(3, 4, LED_ON); 
-  matrix.drawPixel(3, 5, LED_ON);
-  matrix.drawPixel(3, 6, LED_ON);
-  matrix.writeDisplay();  // write the changes we just made to the display
-  delay(500);
-  
-  // NE
-  matrix.clear();      // clear display 
-  matrix.drawPixel(5, 0, LED_ON);  
-  matrix.drawPixel(6, 0, LED_ON); 
-  matrix.drawPixel(7, 0, LED_ON); 
-  matrix.drawPixel(5, 2, LED_ON);
-  matrix.drawPixel(4, 3, LED_ON);
-  matrix.drawPixel(6, 1, LED_ON); 
-  matrix.drawPixel(7, 1, LED_ON);
-  matrix.drawPixel(7, 2, LED_ON);
-  matrix.writeDisplay();  // write the changes we just made to the display
-  delay(500);
-  
-  // E
-  matrix.clear();      // clear display 
-  matrix.drawPixel(7, 3, LED_ON);  
-  matrix.drawPixel(7, 4, LED_ON); 
-  matrix.writeDisplay();  // write the changes we just made to the display
-  delay(500);
-  
-  // SE
-  matrix.clear();      // clear display 
-  matrix.drawPixel(6, 7, LED_ON);  
-  matrix.drawPixel(7, 6, LED_ON); 
-  matrix.drawPixel(7, 7, LED_ON);  
-  matrix.writeDisplay();  // write the changes we just made to the display
-  delay(500);
-  
-  // S
-  matrix.clear();      // clear display 
-  matrix.drawPixel(3, 7, LED_ON);  
-  matrix.drawPixel(4, 7, LED_ON); 
-  matrix.writeDisplay();  // write the changes we just made to the display
-  delay(500);
-  
-  // SW
-  matrix.clear();      // clear display 
-  matrix.drawPixel(0, 6, LED_ON);  
-  matrix.drawPixel(0, 7, LED_ON); 
-  matrix.drawPixel(1, 7, LED_ON);  
-  matrix.writeDisplay();  // write the changes we just made to the display
-  delay(500);
-  
-  // W
-  matrix.clear();      // clear display 
-  matrix.drawPixel(0, 3, LED_ON);  
-  matrix.drawPixel(0, 4, LED_ON); 
-  matrix.writeDisplay();  // write the changes we just made to the display
-  delay(500);
-  
-  // NW
-  matrix.clear();      // clear display 
-  matrix.drawPixel(0, 0, LED_ON);  
-  matrix.drawPixel(0, 1, LED_ON); 
-  matrix.drawPixel(1, 0, LED_ON);  
-  matrix.writeDisplay();  // write the changes we just made to the display
-  delay(500);
-
-}
-
-int getHeadingDirection(float degreesFromNorth) {
-  
-  int headingDirection;
-  
   if (degreesFromNorth >= 337.5 || degreesFromNorth <= 22.5) {
-    headingDirection = 1;
+    // N arrow
+    matrix.clear();      // clear display 
+    matrix.drawLine(3, 0, 3, 6, LED_ON);
+    matrix.fillTriangle(1, 2, 3, 0, 5, 2, LED_ON);
+    matrix.writeDisplay();  // write the changes we just made to the display
+    
   } else if (degreesFromNorth > 22.5 && degreesFromNorth <= 67.5) {
-    headingDirection = 2;
+    // NE arrow
+    matrix.clear();      // clear display 
+    matrix.drawLine(2, 5, 7, 0, LED_ON);
+    matrix.fillTriangle(4, 0, 7, 0, 7, 3, LED_ON);
+    matrix.writeDisplay();  // write the changes we just made to the display
+    
   } else if (degreesFromNorth > 67.5 && degreesFromNorth <= 112.5) {
-    headingDirection = 3;
+    // E arrow
+    matrix.clear();      // clear display 
+    matrix.drawLine(1, 3, 7, 3, LED_ON);
+    matrix.fillTriangle(5, 1, 5, 5, 7, 3, LED_ON);
+    matrix.writeDisplay();  // write the changes we just made to the display
+    
   } else if (degreesFromNorth > 112.5 && degreesFromNorth <= 157.5) {
-    headingDirection = 4;
+    // SE arrow
+    matrix.clear();      // clear display 
+    matrix.drawLine(2, 2, 7, 7, LED_ON);
+    matrix.fillTriangle(7, 4, 7, 7, 4, 7, LED_ON);
+    matrix.writeDisplay();  // write the changes we just made to the display
+    
   } else if (degreesFromNorth > 157.5 && degreesFromNorth <= 202.5) {
-    headingDirection = 5;
+    // S arrow
+    matrix.clear();      // clear display 
+    matrix.drawLine(4, 1, 4, 7, LED_ON);
+    matrix.fillTriangle(2, 5, 4, 7, 6, 5, LED_ON);
+    matrix.writeDisplay();  // write the changes we just made to the display
+    
   } else if (degreesFromNorth > 202.5 && degreesFromNorth <= 247.5) {
-    headingDirection = 6;
+    // SW arrow
+    matrix.clear();      // clear display 
+    matrix.drawLine(5, 2, 0, 7, LED_ON);
+    matrix.fillTriangle(0, 7, 0, 4, 3, 7, LED_ON);
+    matrix.writeDisplay();  // write the changes we just made to the display
+    
   } else if (degreesFromNorth > 247.5 && degreesFromNorth <= 292.5) {
-    headingDirection = 7;
+    // W arrow
+    matrix.clear();      // clear display 
+    matrix.drawLine(0, 4, 6, 4, LED_ON);
+    matrix.fillTriangle(0, 4, 2, 2, 2, 6, LED_ON);
+    matrix.writeDisplay();  // write the changes we just made to the display
+    
   } else if (degreesFromNorth > 292.5 && degreesFromNorth < 337.5) {
-    headingDirection = 8;
-  } else {
-    headingDirection = 9;
+    // NW arrow
+    matrix.clear();      // clear display 
+    matrix.drawLine(0, 0, 5, 5, LED_ON);
+    matrix.fillTriangle(0, 0, 0, 3, 3, 0, LED_ON);
+    matrix.writeDisplay();  // write the changes we just made to the display
   }
-  
-  return headingDirection;
 }
 
-String getHeadingDirectionFriendly(int headingDirection) {
+
+
   
-  String headingDirectionFriendly;
   
-  if (headingDirection == 1) {
-    headingDirectionFriendly = "N";
-  } else if (headingDirection == 2) {
-    headingDirectionFriendly = "NE";
-  } else if (headingDirection == 3) {
-    headingDirectionFriendly = "E";
-  } else if (headingDirection == 4) {
-    headingDirectionFriendly = "SE";
-  } else if (headingDirection == 5) {
-    headingDirectionFriendly = "S";
-  } else if (headingDirection == 6) {
-    headingDirectionFriendly = "SW";
-  } else if (headingDirection == 7) {
-    headingDirectionFriendly = "W";
-  } else if (headingDirection == 8) {
-    headingDirectionFriendly = "NW";
-  } else if (headingDirection == 9) {
-    headingDirectionFriendly = "??";
-  }
   
-  return headingDirectionFriendly;
-}
+  
+  
+
+
